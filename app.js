@@ -5,9 +5,12 @@ const methodOverride = require("method-override");
 const ejs = require("ejs");
 const ejsMate = require("ejs-mate");
 
+require("dotenv").config();
+
 const Listing = require("./models/listing");
 
-const port = 8080;
+
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -19,9 +22,9 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
 
-    console.log(`App listening on port ${port}`);
+    console.log(`App listening on port ${PORT}`);
 })
 
 // GET requests
