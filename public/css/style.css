@@ -1,0 +1,117 @@
+body {
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cards */
+
+
+.listing-card {
+
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+
+
+    height: 200px !important;
+    width: 100% !important;
+
+    border-radius: 1rem !important;
+
+    object-fit: cover !important;
+}
+
+.card-img-top:hover {
+
+    opacity: 0.8;
+}
+
+.card-body {
+
+    margin-top: 10px;
+    padding: 0 !important;
+}
+
+.card-text {
+
+    font-weight: 400 !important;
+}
+
+.add-btn {
+
+    background-color: rgb(253, 38, 75) !important;
+    border: none !important;
+}
+
+
+/* SHOW PAGE  */
+
+.show-img {
+
+    height: 40vh !important;
+
+}
+
+.btns {
+
+    display: flex;
+}
+
+
+
+/* Reviews */
+
+.review-box {
+
+    background-color: rgba(241, 233, 233, 0.377) !important;
+    /* border: 1px solid grey !important; */
+    border: none !important;
+    padding: 0px 5px 0px 5px;
+}
+
+
+
+
+/* Flash  Alert*/
+
+.flash-alert {
+
+    position: absolute !important;
+
+    @media (max-width: 570px) {
+
+        width: 100% !important;
+    }
+}
+
+.success-flash {
+
+    @media (max-width: 570px) {
+
+        background-color: rgba(209, 231, 221, 0.493) !important;
+    }
+
+}
+
+.danger-flash {
+
+    @media (max-width: 570px) {
+
+        background-color: rgba(248, 215, 218, 0.493) !important;
+
+    }
+}
+
+
+
+/* Rating */
+
+.checked{
+
+    color: orange;
+}
