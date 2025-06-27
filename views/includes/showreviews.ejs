@@ -1,0 +1,56 @@
+
+   <div class="row row-cols-lg-2 justify-content-between offset-lg-2">
+        
+        <% for(let review of listing.reviews) { %>  
+        
+            <div>
+        
+                <div class="card col mb-3 review-box" >
+
+                    <div class="card-body">
+                
+                        <div style="display: flex; justify-content: space-between;">
+
+                            <h5 class="card-title"><%= review.author.username %></h5>
+
+                            <% if(user && user._id.equals(review.author._id)) {%>
+
+                                <form method="POST" action="/listings/<%=listing.id%>/reviews/<%=review.id%>?_method=DELETE">
+
+                                    <button style="border: none; background: none;"><i class="fa-solid fa-trash"></i></button>
+
+                                </form>
+
+                            <% } %>
+
+                        </div>
+
+                        <div style="display: flex;">
+
+                            <% for(let i = 0; i < 5; i++){%>
+                        
+                                <% if(i < review.rating) {%>
+
+                                    <i class="fa-solid fa-star checked"></i>
+                                <%} else{%>
+                        
+                                    <i class="fa-solid fa-star"></i>
+                                <% } %>
+
+                            <% } %>
+
+                        </div>
+
+                        <p class="card-text mb-0 mt-2"><%= review.comment %></p>
+                        
+                        <h6  class="text-end " style="font-size: x-small;"><%= review.created_at.toLocaleString().slice(0, 9) %></h6>
+
+                    </div>
+                
+                </div>
+
+             </div>
+        
+         <% } %>
+
+    </div>
