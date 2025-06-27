@@ -7,48 +7,72 @@
     <div class="row">
 
 
-        <div class="offset-sm-3">
+        <div>
 
             <br><br>   
-            <h1>Listing Details</h1>
+            <h1 class="offset-lg-2"><%= listing.title %></h1>
             <br>
 
         </div>
 
 
-        <div class="col-lg-6 col-md-7 offset-sm-3">
+        <div class="col-lg-8  col-md-10 offset-lg-2">
 
-            <div class="card col" >        
-                <img src=<%= listing.image %> class="card-img-top show-img" alt="listing-image">
+            <div class="card col listing-card" >        
+                <img src=<%= listing.image.url %> class="card-img-top show-img" alt="listing-image">
                 <div class="card-body">
-                    <p class="card-text">
-                        <b><%= listing.title %></b><br><br>                
-                        <%= listing.description %> <br><br>
-                        &#8360; <%= listing.price.toLocaleString("en-pk") %> / night <br><br>
-                        <%= listing.location %> <br>
-                        <%= listing.country %> <br>
-                    </p>
+                        <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
+                        
+                        <p class="card-text"><%= listing.description %></p>
+
+                        <p class="card-text">&#8360; <%= listing.price.toLocaleString("en-pk") %> / night</p>
+
+                        <p class="card-text"><%= listing.location %></p>
+
+                        <p class="card-text"><%= listing.country %></p>
                 </div>
             </div>
 
         </div>
 
-        </div>
+    </div>
 
-        <div class="btns">
+    <% if(user && user._id.equals(listing.owner._id)) {%>
 
-            <a href="/listings/<%= listing.id %>/edit" class="btn add-btn btn-dark col-md-1 offset-sm-3">Edit</a>
+    <div class="btns">
 
-            <form method="POST" action="/listings/<%= listing.id %>?_method=DELETE">
+        <a href="/listings/<%= listing.id %>/edit" class="btn add-btn btn-dark col-md-1 offset-sm-2">Edit</a>
 
-                <button class="btn btn-dark offset-4">Delete</button>
+        <form method="POST" action="/listings/<%= listing.id %>?_method=DELETE">
 
-            </form>
+            <button class="btn btn-dark offset-4">Delete</button>
 
-        </div>
+        </form>
+        
+    </div>
 
+    <% } %>
 
-    <br><br>
-</div>
+        
+    <% if(user) { %>
+        
+        <hr>
+        
+        <%- include("../includes/addreview.ejs") %>
+        
+        <br>
+
+    <% }%>
+    
+    
+    <% if(listing.reviews.length) { %>
+
+        <hr>
+
+        <%- include("../includes/showreviews.ejs") %>
+
+        <br> 
+
+    <% } %>
 
 </body>

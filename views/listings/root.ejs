@@ -1,0 +1,43 @@
+<% layout("layouts/boilerplate") %>
+
+<br>
+
+<h1 class="text-center">Wander Lust</h1>
+
+<br><br>
+
+   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 justify-content-evenly">
+       
+    <% let count = 0 %>
+
+        <% for(let listing of listings) { %>  
+        
+            <a href="/listings/<%= listing.id %>" style="text-decoration: none;">
+
+                <div class="card listing-card col" >
+                    <img src=<%= listing.image.url %> class="card-img-top" alt="listing-image">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= listing.title %> <br></b>
+                            &#8360; <%= listing.price.toLocaleString("en-pk") %> / night
+                        </p>
+                    </div>
+                </div>
+
+            </a>
+
+
+            <% count++; if(count == 3) { break;}%>
+
+        <% } %>
+
+    </div>
+
+    <br>
+
+    <form method="GET" action="/listings">
+
+        <button class="btn btn-dark add-btn col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12">View All Listings!</button>
+            
+    </form>
+    <br><br>
